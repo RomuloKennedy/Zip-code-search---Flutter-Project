@@ -1,6 +1,6 @@
 import 'package:busca_cep/app/config/dependency_injection.dart';
 import 'package:busca_cep/app/data/services/api_client_service.dart';
-import 'package:busca_cep/app/domain/models/endereco.dart';
+import 'package:busca_cep/app/domain/models/address.dart';
 import 'package:busca_cep/app/ui/search_page/widgets/dialog_error.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,7 @@ class SearchViewModel {
 
   buscarEndereco(String cep, context) async {
     try {
-      Endereco endereco = await api.buscarEndereco(cep);
+      Address endereco = await api.buscarEndereco(cep);
       Navigator.pushNamed(context, '/result_page', arguments: endereco);
     } catch (e) {
       showDialog(

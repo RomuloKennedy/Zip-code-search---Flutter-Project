@@ -1,10 +1,10 @@
-import 'package:busca_cep/app/domain/models/endereco.dart';
+import 'package:busca_cep/app/domain/models/address.dart';
 import 'package:busca_cep/app/ui/result_page/widgets/result_endereco_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen({super.key, required this.endereco});
-  final Endereco endereco;
+  final Address endereco;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class ResultScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          ResultEnderecoCard(
-            endereco: endereco,
+          ResultAddressCard(
+            address: endereco,
           ),
         ],
       )),

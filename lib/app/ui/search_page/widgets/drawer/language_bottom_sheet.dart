@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 
 class LanguageBottomSheet extends StatelessWidget {
-  final List<String> idiomas;
-  final String idiomaSelecionado;
-  final Function(String) onIdiomaSelecionado;
+  final List<String> languages;
+  final String selectedLanguage;
+  final Function(String) onSelectedLanguage;
 
   const LanguageBottomSheet({
     super.key,
-    required this.idiomas,
-    required this.idiomaSelecionado,
-    required this.onIdiomaSelecionado,
+    required this.languages,
+    required this.selectedLanguage,
+    required this.onSelectedLanguage,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: idiomas.map((idioma) {
+      children: languages.map((language) {
         return ListTile(
-          title: Text(idioma),
-          trailing: idioma == idiomaSelecionado
+          title: Text(language),
+          trailing: language == selectedLanguage
               ? const Icon(Icons.check, color: Colors.green)
               : null,
           onTap: () async {
-            await onIdiomaSelecionado(idioma);
+            await onSelectedLanguage(language);
             Navigator.pop(context);
           },
         );

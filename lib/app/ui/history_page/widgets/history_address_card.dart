@@ -1,13 +1,13 @@
 import 'package:busca_cep/app/config/dependency_injection.dart';
 import 'package:busca_cep/app/data/services/language_service.dart';
-import 'package:busca_cep/app/domain/models/endereco.dart';
+import 'package:busca_cep/app/domain/models/address.dart';
 import 'package:busca_cep/app/localization/translations.dart';
 import 'package:flutter/material.dart';
 
 class HistoryAdddressCard extends StatelessWidget {
   HistoryAdddressCard(
-      {super.key, required this.endereco, required this.onDelete});
-  final Endereco endereco;
+      {super.key, required this.address, required this.onDelete});
+  final Address address;
   final Function onDelete;
   String currentTagLanguage = getIt.get<LanguageService>().currentTagLanguage;
 
@@ -27,21 +27,21 @@ class HistoryAdddressCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                      "${translations[currentTagLanguage]!['history-card-text-state']}: ${endereco.uf}"),
+                      "${translations[currentTagLanguage]!['history-card-text-state']}: ${address.state}"),
                   Text(
-                      "${translations[currentTagLanguage]!['history-card-text-city']}: ${endereco.localidade}"),
+                      "${translations[currentTagLanguage]!['history-card-text-city']}: ${address.city}"),
                   Text(
-                      "${translations[currentTagLanguage]!['history-card-text-district']}: ${endereco.bairro}"),
+                      "${translations[currentTagLanguage]!['history-card-text-district']}: ${address.district}"),
                   Text(
-                      "${translations[currentTagLanguage]!['history-card-text-road']}: ${endereco.logradouro}"),
+                      "${translations[currentTagLanguage]!['history-card-text-road']}: ${address.street}"),
                   Text(
-                      "${translations[currentTagLanguage]!['history-card-text-zip-code']}: ${endereco.cep}"),
+                      "${translations[currentTagLanguage]!['history-card-text-zip-code']}: ${address.zipCode}"),
                 ],
               ),
             ),
             IconButton(
               icon: const Icon(Icons.delete, color: Colors.red),
-              onPressed: () => onDelete(endereco),
+              onPressed: () => onDelete(address),
             ),
           ],
         ),

@@ -1,4 +1,4 @@
-import 'package:busca_cep/app/domain/models/endereco.dart';
+import 'package:busca_cep/app/domain/models/address.dart';
 import 'package:busca_cep/app/ui/history_page/widgets/history_screen.dart';
 import 'package:busca_cep/app/ui/result_page/widgets/result_screen.dart';
 import 'package:busca_cep/app/ui/search_page/widgets/search_screen.dart';
@@ -12,7 +12,7 @@ class RouteGenerator {
       case '/':
         return MaterialPageRoute(builder: (_) => const SearchScreen());
       case '/result_page':
-        if (arg is Endereco) {
+        if (arg is Address) {
           return MaterialPageRoute(
               builder: (_) => ResultScreen(
                     endereco: arg,

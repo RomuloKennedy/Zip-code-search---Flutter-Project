@@ -1,4 +1,4 @@
-import 'package:busca_cep/app/domain/models/endereco.dart';
+import 'package:busca_cep/app/domain/models/address.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -8,12 +8,12 @@ class ApiClientService {
   final Client httpClient;
 
   ApiClientService({required this.endpoint, required this.httpClient});
-  Future<Endereco> buscarEndereco(String cep) async {
+  Future<Address> buscarEndereco(String zipCode) async {
     try {
-      Response response = await httpClient.post(Uri.parse("$endpoint/$cep"));
+      Response response = await httpClient.post(Uri.parse("$endpoint/$zipCode"));
       Map<String, dynamic> body = jsonDecode(utf8.decode(response.bodyBytes));
-      Endereco endereco = Endereco.fromJson(body);
-      return endereco;
+      Address address = Address.fromJson(body);
+      return address;
     } catch (e) {
       Sentry.captureException(e);
       throw Exception("Erro");
@@ -24,18 +24,18 @@ class ApiClientService {
     try {
       Response response = await httpClient.get(Uri.parse(endpoint));
       List<dynamic> body = jsonDecode(utf8.decode(response.bodyBytes));
-      List<Endereco> listaDeEnderecos = Endereco.fromJsonToEnderecoList(body);
+      List<Address> addressList = Address.fromJsonToEnderecoList(body);
 
-      return listaDeEnderecos;
+      return addressList;
     } catch (e) {
       Sentry.captureException(e);
       throw Exception();
     }
   }
 
-  deletarPesquisa(Endereco endereco) async {
+  deleteSearch(Address address) async {
     try {
-      await httpClient.delete(Uri.parse("$endpoint/${endereco.id}"));
+      await httpClient.delete(Uri.parse("$endpoint/${address.id}"));
     } catch (e) {
       Sentry.captureException(e);
     }

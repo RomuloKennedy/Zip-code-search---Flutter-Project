@@ -1,9 +1,9 @@
-import 'package:busca_cep/app/domain/models/endereco.dart';
+import 'package:busca_cep/app/domain/models/address.dart';
 import 'package:flutter/material.dart';
 
-class ResultEnderecoCard extends StatelessWidget {
-  const ResultEnderecoCard({super.key, required this.endereco});
-  final Endereco endereco;
+class ResultAddressCard extends StatelessWidget {
+  const ResultAddressCard({super.key, required this.address});
+  final Address address;
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +30,18 @@ class ResultEnderecoCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${endereco.logradouro}, ${endereco.bairro}",
+                    "${address.street}, ${address.district}",
                     style: const TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    "${endereco.localidade} - ${endereco.uf}",
+                    "${address.city} - ${address.state}",
                     style: const TextStyle(fontSize: 15),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    endereco.cep,
+                    address.zipCode,
                     style: TextStyle(fontSize: 14, color: Colors.grey[700]),
                   ),
                 ],

@@ -1,5 +1,5 @@
 import 'package:busca_cep/app/config/dependency_injection.dart';
-import 'package:busca_cep/app/domain/models/endereco.dart';
+import 'package:busca_cep/app/domain/models/address.dart';
 import 'package:busca_cep/app/ui/history_page/view_models/history_viewmodel.dart';
 import 'package:busca_cep/app/ui/history_page/widgets/history_address_card.dart';
 import 'package:flutter/material.dart';
@@ -23,18 +23,18 @@ class _HistoryScreenState extends State<HistoryScreen> {
       body: ListenableBuilder(
         listenable: historyViewModel,
         builder: (context, _) {
-          return FutureBuilder<List<Endereco>?>(
-            future: historyViewModel.enderecosPesquisados(),
+          return FutureBuilder<List<Address>?>(
+            future: historyViewModel.addressesSearched(),
             builder: (BuildContext context,
-                AsyncSnapshot<List<Endereco>?> snapshoot) {
+                AsyncSnapshot<List<Address>?> snapshoot) {
               if (snapshoot.hasData) {
                 return ListView.builder(
                   itemBuilder: (context, index) {
-                    Endereco endereco = snapshoot.data![index];
+                    Address address = snapshoot.data![index];
 
                     return HistoryAdddressCard(
-                      endereco: endereco,
-                      onDelete: historyViewModel.deletarEndereco,
+                      address: address,
+                      onDelete: historyViewModel.deleteAddress,
                     );
                   },
                   itemCount: snapshoot.data!.length,

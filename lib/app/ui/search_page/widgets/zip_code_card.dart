@@ -3,8 +3,8 @@ import 'package:busca_cep/app/ui/search_page/widgets/dialog_error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class BuscaCepCard extends StatelessWidget {
-  const BuscaCepCard(
+class ZipCodeCard extends StatelessWidget {
+  const ZipCodeCard(
       {super.key, required this.controller, required this.searchViewModel});
   final TextEditingController controller;
   final SearchViewModel searchViewModel;

@@ -35,8 +35,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
                 ListTile(
                   leading: const Icon(Icons.language),
                   title: Text(
-                      '${appStrings.language}: ${drawerViewModel.idiomaSelecionado}'),
-                  onTap: () => drawerViewModel.abrirSelecionarIdioma(context),
+                      '${appStrings.language}: ${drawerViewModel.selectedLanguage}'),
+                  onTap: () => drawerViewModel.openSelectedLanguage(context),
                 ),
               ],
             ),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:busca_cep/app/config/dependency_injection.dart';
 
 class DrawerViewModel extends ChangeNotifier {
-  String idiomaSelecionado = AppStrings().selectedLanguage;
+  String selectedLanguage = AppStrings().selectedLanguage;
   final LanguageService languageService = getIt.get<LanguageService>();
   final List<String> idiomas = [
     'Português',
@@ -20,17 +20,17 @@ class DrawerViewModel extends ChangeNotifier {
     'Filipino',
   ];
 
-  abrirSelecionarIdioma(BuildContext context) {
+  openSelectedLanguage(BuildContext context) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       useSafeArea: true,
       builder: (context) => LanguageBottomSheet(
-        idiomas: idiomas,
-        idiomaSelecionado: idiomaSelecionado,
-        onIdiomaSelecionado: (idioma) async {
-          idiomaSelecionado = idioma;
-          await languageService.updateTagLanguage(idiomaSelecionado);
+        languages: idiomas,
+        selectedLanguage: selectedLanguage,
+        onSelectedLanguage: (idioma) async {
+          selectedLanguage = idioma;
+          await languageService.updateTagLanguage(selectedLanguage);
           notifyListeners();
         },
       ),

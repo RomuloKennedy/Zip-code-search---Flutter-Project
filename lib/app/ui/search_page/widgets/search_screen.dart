@@ -1,5 +1,5 @@
 import 'package:busca_cep/app/ui/search_page/view_models/search_viewmodel.dart';
-import 'package:busca_cep/app/ui/search_page/widgets/busca_cep_card.dart';
+import 'package:busca_cep/app/ui/search_page/widgets/zip_code_card.dart';
 import 'package:busca_cep/app/ui/search_page/widgets/drawer/drawer_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:busca_cep/app/config/dependency_injection.dart';
@@ -17,10 +17,12 @@ class SearchScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Buscador de Endereço"),
         centerTitle: true,
-        
       ),
       body: Center(
-        child: BuscaCepCard(controller: controller, searchViewModel: searchViewModel,),
+        child: ZipCodeCard(
+          controller: controller,
+          searchViewModel: searchViewModel,
+        ),
       ),
     );
   }
