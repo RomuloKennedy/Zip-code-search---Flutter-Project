@@ -12,8 +12,7 @@ class LanguageRepository {
       return language;
     } catch (e) {
       Language language = Language(tag: "pt-BR");
-      await insertTagLanguage(language);
-      await getLanguage();
+      await insertTagLanguage(language);      
       return language;
     }
   }
