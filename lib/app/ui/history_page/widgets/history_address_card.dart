@@ -2,6 +2,7 @@ import 'package:busca_cep/app/config/dependency_injection.dart';
 import 'package:busca_cep/app/data/services/language_service.dart';
 import 'package:busca_cep/app/domain/models/address.dart';
 import 'package:busca_cep/app/localization/translations.dart';
+import 'package:busca_cep/app/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class HistoryAdddressCard extends StatelessWidget {
@@ -10,6 +11,7 @@ class HistoryAdddressCard extends StatelessWidget {
   final Address address;
   final Function onDelete;
   String currentTagLanguage = getIt.get<LanguageService>().currentTagLanguage;
+  AppStrings appStrings = AppStrings();
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +28,11 @@ class HistoryAdddressCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                      "${translations[currentTagLanguage]!['history-card-text-state']}: ${address.state}"),
-                  Text(
-                      "${translations[currentTagLanguage]!['history-card-text-city']}: ${address.city}"),
-                  Text(
-                      "${translations[currentTagLanguage]!['history-card-text-district']}: ${address.district}"),
-                  Text(
-                      "${translations[currentTagLanguage]!['history-card-text-road']}: ${address.street}"),
-                  Text(
-                      "${translations[currentTagLanguage]!['history-card-text-zip-code']}: ${address.zipCode}"),
+                  Text(appStrings.historyCardTextState),
+                  Text(appStrings.historyCardTextCity),
+                  Text(appStrings.historyCardTextDistrict),
+                  Text(appStrings.historyCardTextStreet),
+                  Text(appStrings.historyCardTextZipCode),
                 ],
               ),
             ),

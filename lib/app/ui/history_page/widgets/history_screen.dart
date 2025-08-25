@@ -2,6 +2,7 @@ import 'package:busca_cep/app/config/dependency_injection.dart';
 import 'package:busca_cep/app/domain/models/address.dart';
 import 'package:busca_cep/app/ui/history_page/view_models/history_viewmodel.dart';
 import 'package:busca_cep/app/ui/history_page/widgets/history_address_card.dart';
+import 'package:busca_cep/app/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -13,12 +14,12 @@ class HistoryScreen extends StatefulWidget {
 
 class _HistoryScreenState extends State<HistoryScreen> {
   HistoryViewModel historyViewModel = getIt.get<HistoryViewModel>();
-
+  AppStrings appStrings = AppStrings();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Histórico de pesquisas"),
+        title: Text(appStrings.historyTitle),
       ),
       body: ListenableBuilder(
         listenable: historyViewModel,
@@ -42,7 +43,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               } else if (snapshoot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
               } else {
-                return const Center(child: Text("Falha ao buscar o histórico"));
+                return Center(child: Text(appStrings.historyFailureMessage));
               }
             },
           );

@@ -1,13 +1,15 @@
 import 'package:busca_cep/app/ui/search_page/view_models/search_viewmodel.dart';
 import 'package:busca_cep/app/ui/search_page/widgets/dialog_error.dart';
+import 'package:busca_cep/app/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ZipCodeCard extends StatelessWidget {
-  const ZipCodeCard(
+  ZipCodeCard(
       {super.key, required this.controller, required this.searchViewModel});
   final TextEditingController controller;
   final SearchViewModel searchViewModel;
+  AppStrings appStrings = AppStrings();
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +23,9 @@ class ZipCodeCard extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                "Digite o CEP",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              Text(
+                appStrings.searchCardTitle,
+                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
               SizedBox(
@@ -33,7 +35,7 @@ class ZipCodeCard extends StatelessWidget {
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   decoration: InputDecoration(
-                    labelText: "CEP",
+                    labelText: appStrings.searchInputPlaceholder,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -49,7 +51,7 @@ class ZipCodeCard extends StatelessWidget {
                       searchViewModel.buscarEndereco(controller.text, context);
                     },
                     icon: const Icon(Icons.search),
-                    label: const Text("Buscar"),
+                    label: Text(appStrings.searchButton),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 12),
@@ -61,7 +63,7 @@ class ZipCodeCard extends StatelessWidget {
                       searchViewModel.historyPage(context);
                     },
                     icon: const Icon(Icons.history),
-                    label: const Text("Histórico"),
+                    label: Text(appStrings.searchHistoryButton),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey[700],
                       padding: const EdgeInsets.symmetric(

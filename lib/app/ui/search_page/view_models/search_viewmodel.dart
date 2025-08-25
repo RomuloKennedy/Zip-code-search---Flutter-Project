@@ -15,7 +15,7 @@ class SearchViewModel {
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return const DialogError();
+          return DialogError();
         },
       );
     }

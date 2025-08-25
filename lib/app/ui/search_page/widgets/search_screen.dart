@@ -1,6 +1,7 @@
 import 'package:busca_cep/app/ui/search_page/view_models/search_viewmodel.dart';
 import 'package:busca_cep/app/ui/search_page/widgets/zip_code_card.dart';
 import 'package:busca_cep/app/ui/search_page/widgets/drawer/drawer_menu.dart';
+import 'package:busca_cep/app/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:busca_cep/app/config/dependency_injection.dart';
 
@@ -11,11 +12,12 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
     SearchViewModel searchViewModel = getIt.get<SearchViewModel>();
+    AppStrings appStrings = AppStrings();
 
     return Scaffold(
       drawer: const DrawerMenu(),
       appBar: AppBar(
-        title: const Text("Buscador de Endereço"),
+        title: Text(appStrings.searchTitle),
         centerTitle: true,
       ),
       body: Center(
