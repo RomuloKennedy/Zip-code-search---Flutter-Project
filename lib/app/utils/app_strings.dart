@@ -12,12 +12,12 @@ class AppStrings{
   String get searchInputPlaceholder => translations[tagLanguage]!['search-input-placeholder']!;
   String get searchDialogFailureMessage => translations[tagLanguage]!['search-dialog-failure-message']!;
   String get searchDialogFailureConfirm => translations[tagLanguage]!['search-dialog-failure-confirm']!;
-  String get resultTitle => translations[tagLanguage]!['result-title']!;
+  String get resultScreenTitle => translations[tagLanguage]!['result-screen-title']!;
   String get historyTitle => translations[tagLanguage]!['history-title']!;
   String get historyCardTextState => translations[tagLanguage]!['history-card-text-state']!;
   String get historyCardTextCity => translations[tagLanguage]!['history-card-text-city']!;
   String get historyCardTextDistrict => translations[tagLanguage]!['history-card-text-district']!;
-  String get historyCardTextRoad => translations[tagLanguage]!['history-card-text-road']!;
+  String get historyCardTextStreet => translations[tagLanguage]!['history-card-text-street']!;
   String get historyCardTextZipCode => translations[tagLanguage]!['history-card-text-zip-code']!;
   String get historyFailureMessage => translations[tagLanguage]!['history-failure-message']!;
   String get language => translations[tagLanguage]!['language']!;
