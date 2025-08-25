@@ -12,20 +12,26 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
     SearchViewModel searchViewModel = getIt.get<SearchViewModel>();
-    AppStrings appStrings = AppStrings();
 
-    return Scaffold(
-      drawer: const DrawerMenu(),
-      appBar: AppBar(
-        title: Text(appStrings.searchTitle),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: ZipCodeCard(
-          controller: controller,
-          searchViewModel: searchViewModel,
+    return ListenableBuilder(
+      listenable: searchViewModel,
+      builder: (context,_){
+      AppStrings appStrings = AppStrings();
+        return  Scaffold(
+        drawer: const DrawerMenu(),
+        appBar: AppBar(
+          title: Text(appStrings.searchTitle),
+          centerTitle: true,
         ),
-      ),
+        body: Center(
+          child: ZipCodeCard(
+            controller: controller,
+            searchViewModel: searchViewModel,
+          ),
+        ),
+      );
+      },
+     
     );
   }
 }
